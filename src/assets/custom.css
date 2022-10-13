@@ -1,0 +1,31 @@
+button:focus {
+    outline: none;
+}
+.portlet{
+    border: 1px #ddd solid;
+}
+.portlet-title{
+    font-size: 14px;
+    border-bottom: 1px #ddd solid;
+    padding: 15px;
+    font-weight: 600;
+    line-height: normal;
+}
+.font-size20{
+    font-size: 20px;
+}
+.text_regular-gray {
+    color: #3b5175;
+    font-size: 14px;
+  }
+.text_regular {
+    color: #3b5175;
+    font-size: 16px;
+    font-weight: 600;
+  }
+.sidebar-nav li {
+    padding: 10px 0;
+    border-bottom: 1px #ddd solid;
+    font-size: 14px;
+}
+.MuiTimelineItem-missingOppositeContent:before{display: none;}
