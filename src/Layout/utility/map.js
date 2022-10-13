@@ -1,6 +1,6 @@
 import React from 'react';
 import map from '../../assets/map.png';
-import { Map, GoogleApiWrapper, HeatMap,InfoWindow } from "google-maps-react";
+//import { Map, GoogleApiWrapper, HeatMap,InfoWindow } from "google-maps-react";
 
 class MapContainer extends React.Component {
 	constructor(props) {
@@ -25,8 +25,10 @@ class MapContainer extends React.Component {
 		"rgba(255, 0, 0, 1)"
 	  ];
 	  return (
-		<div style={{height:'200px'}} >
-		  <Map
+		<div 
+		//style={{height:'calc(100vh - 370px)'}} 
+		>
+		  {/* <Map
 			google={this.props.google}
 			className={`map position-relative`}
 			zoom={4}
@@ -43,13 +45,11 @@ class MapContainer extends React.Component {
 			  opacity={1}
 			  radius={20}
 			/>
-		  </Map>
+		  </Map> */}
+		  <img src={map} className="w-100" />
 		</div>
 	  );
 	}
   }
   
-  export default GoogleApiWrapper({
-	apiKey: "AIzaSyDGqipm4Lsoq2WkGQDoH1_Iu6eXPjiuE5A",
-	libraries: ["visualization"]
-  })(MapContainer);
+  export default MapContainer;

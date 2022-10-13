@@ -1,31 +1,145 @@
 button:focus {
     outline: none;
 }
-.portlet{
+.h-56{
+    height: calc(100vh - 56px);
+}
+.p-15 {
+    padding: 15px;
+}
+
+.pt-15 {
+    padding-top: 15px;
+}
+
+.pb-15 {
+    padding-bottom: 15px;
+}
+
+.pl-15 {
+    padding-left: 15px;
+}
+
+.pr-15 {
+    padding-right: 15px;
+}
+.p-0 {
+    padding: 0 !important;
+}
+
+.pt-0 {
+    padding-top: 0 !important;
+}
+
+.pb-0 {
+    padding-bottom: 0 !important;
+}
+
+.pl-0 {
+    padding-left: 0 !important;
+}
+
+.pr-0 {
+    padding-right: 0 !important;
+}
+.m-15 {
+    margin: 15px;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.ml-15 {
+    margin-left: 15px;
+}
+
+.mr-15 {
+    margin-right: 15px;
+}
+.border-right{
+    border-right: 1px #ddd solid;
+}
+.portlet {
     border: 1px #ddd solid;
 }
-.portlet-title{
+
+.portlet-title {
     font-size: 14px;
     border-bottom: 1px #ddd solid;
     padding: 15px;
     font-weight: 600;
     line-height: normal;
 }
-.font-size20{
+.memuicon div{
+    width: 35px;
+    height: 4px;
+    background-color: #fff;
+    margin: 6px 0;
+}
+.dropdown-toggle::after{display: none !important;}
+.dropdown-toggle:focus,.dropdown-toggle:hover{
+    background-color: transparent !important;
+}
+.dropdown-menu.show {
+    right: 0 !important;
+    left: auto !important;
+}
+.font-size20 {
     font-size: 20px;
 }
+
 .text_regular-gray {
     color: #3b5175;
     font-size: 14px;
-  }
+}
+
 .text_regular {
     color: #3b5175;
     font-size: 16px;
     font-weight: 600;
-  }
+}
+
 .sidebar-nav li {
     padding: 10px 0;
     border-bottom: 1px #ddd solid;
     font-size: 14px;
 }
-.MuiTimelineItem-missingOppositeContent:before{display: none;}
+.btimeline ul:before {
+    width: 1px;
+    height: calc(100% - 24px);
+    position: absolute;
+    background-color: #ddd;
+    content: "";
+    display: block;
+    top: 13px;
+    left: 12px;
+}
+.btimeline ul {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.btimeline li {
+    position: relative;
+    padding-left: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.btimeline .span-c{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px #ddd solid;
+    left: 8px;
+    top: 14px;
+}

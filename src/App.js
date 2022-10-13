@@ -7,8 +7,8 @@ function App() {
   return (
     <>
       <Header />
-      <div className="container-fluid">
-        <div className="row">
+      <div className="container-fluid h-56">
+        <div className="row h-100">
           <LeftMenu />
           <Home />
         </div>

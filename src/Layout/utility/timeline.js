@@ -14,7 +14,7 @@ export default function Btimeline({ data }) {
     <ul>
       {data?.timeLineData?.map((el, i) => {
         return (
-          <li>{el?.launch_date_utc}</li>
+          <li><span style={{borderColor:getRandomColor()}} className="span-c"/>{el?.launch_date_utc}</li>
         );
       })}
     </ul>

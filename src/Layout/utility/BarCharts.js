@@ -61,7 +61,7 @@ var config = { //to make chart responsive
 };
 let style = {
   with:'328px',
-  height:'190px'
+  height:'calc(100vh - 380px)'
 }
   return <Plot
   data={data}

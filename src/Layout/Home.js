@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BarChart from "../Layout/utility/BarCharts";
 import Btimeline from "../Layout/utility/timeline";
+import Spinner from 'react-bootstrap/Spinner';
 import {
   fetchPostsUsers,
   fetchUpcomingUsers,
@@ -9,17 +10,23 @@ import {
   fetchTimeLineData,
 } from "../Layout/redux/actions/ApiCall";
 import { useDispatch, useSelector } from "react-redux";
-//import MapContainer from "../Layout/utility/map.js";
+import MapContainer from "../Layout/utility/map.js";
 
 const Home = () => {
   const postUserApi = useSelector((state) => state.reducerPosts);
   const upcomingUserApi = useSelector((state) => state.reducerUpcoming);
   const reducerMapData = useSelector((state) => state.reducerMapData);
   const reducerTimeLineData = useSelector((state) => state.reducerTimeLineData);
+
+
+
   const dispatch = useDispatch();
   const [mapData, setMapData] = useState([]);
   const [barData, setBarData] = useState([]);
+  const [dataLoad, setdataLoad] = useState(false);
+  console.log('dataLoad', dataLoad)
   const AllApi = async () => {
+    setdataLoad(true);
     let endpoints = [
       "https://api.spacexdata.com/v3/capsules/past",
       "https://api.spacexdata.com/v3/capsules/upcoming",
@@ -33,9 +40,11 @@ const Home = () => {
         dispatch(fetchUpcomingUsers(response[1].data));
         dispatch(fetchMapData(response[2].data));
         dispatch(fetchTimeLineData(response[3].data));
+        setdataLoad(false);
       })
       .catch((err) => {
         console.log("error", err);
+        setdataLoad(false);
       });
   };
 
@@ -88,17 +97,19 @@ const Home = () => {
         <div className="portlet-title mb-3">Launch Dashoard</div>
 
         <div className="d-flex justify-content-around">
-          <div className="portlet p-3 mb-3 w-100 ml-3 mr-3">
+          <div className="portlet p-15 mb-15 w-100 ml-15 mr-15">
+            {dataLoad ? <div className="d-flex align-items-center justify-content-center h-100"><Spinner animation="border" variant="primary" /></div> :<>
             <div className="text_regular">{Object.keys(upcomingCount).length}</div>
             <div className="text_regular-gray">Upcoming</div>
+            </>}
           </div>
-          <div className="portlet p-3 mb-3 w-100 mr-3">
-            <div className="text_regular">{Object.keys(PostCount).length}</div>
-            <div className="text_regular-gray">Past</div>
+          <div className="portlet p-15 mb-15 w-100 mr-15">
+            {dataLoad ? <div className="d-flex align-items-center justify-content-center h-100"><Spinner animation="border" variant="primary" /></div> :<><div className="text_regular">{Object.keys(PostCount).length}</div>
+            <div className="text_regular-gray">Past</div></>}
           </div>
-          <div className="portlet p-3 mb-3 w-100 mr-3">
-            <div className="text_regular">{Object.keys(TotalCount).length}</div>
-            <div className="text_regular-gray">Total</div>
+          <div className="portlet p-15 mb-15 w-100 mr-15">
+            {dataLoad ? <div className="d-flex align-items-center justify-content-center h-100"><Spinner animation="border" variant="primary" /></div> :<><div className="text_regular">{Object.keys(TotalCount).length}</div>
+            <div className="text_regular-gray">Total</div></>}
           </div>
         </div>
       </div>
@@ -108,21 +119,23 @@ const Home = () => {
           <div className="portlet mb-xs-3 mb-sm-3">
             <div className="portlet-title">Launchpad location</div>
             <div
-              //className="d-flex align-items-center"
-              style={{ width: "100%", height: "200px" }}
+              className="d-flex align-items-center "
+              style={{ width: "100%", height: "calc(100vh - 380px)" }}
             >
-              {/* <MapContainer
+              {dataLoad ? <div className="d-flex align-items-center justify-content-center w-100 h-100"><Spinner animation="border" variant="primary" /></div> :<MapContainer
                 data={mapData}
                 center={{ lat: mapData[2]?.lat, lng: mapData[2]?.lng }}
-              /> */}
+              />}
             </div>
           </div>
         </div>
         <div className="col-12 col-md-4 pr-md-0">
           <div className="portlet">
             <div className="portlet-title">Launch Over Time</div>
-            <div style={{ width: "100%", height: "200px" }}>
-              <BarChart barData={barData} />
+            <div className="text-center" style={{ width: "100%", height: "calc(100vh - 380px)" }}>
+              { dataLoad ? <div className="d-flex align-items-center justify-content-center h-100"><Spinner animation="border" variant="primary" /></div>
+              : <BarChart barData={barData} />}
+            
             </div>
           </div>
         </div>
@@ -130,10 +143,10 @@ const Home = () => {
           <div className="portlet">
             <div className="portlet-title">Launch Timeline</div>
             <div
-              className="pt-3"
-              style={{ width: "100%", height: "200px", overflow: "auto" }}
+              className="pt-15 pb-15 btimeline"
+              style={{ width: "100%", height: "calc(100vh - 370px)", overflow: "auto" }}
             >
-              <Btimeline data={reducerTimeLineData} />
+              {dataLoad ? <div className="d-flex align-items-center justify-content-center h-100"><Spinner animation="border" variant="primary" /></div> : <Btimeline data={reducerTimeLineData} />}
             </div>
           </div>
         </div>

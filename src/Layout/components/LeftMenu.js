@@ -5,8 +5,8 @@ import Accordion from 'react-bootstrap/Accordion';
 const LeftMenu = (anchor) => {
 
 
-  return (<div className="col-12 col-md-2 pt-3 border-right">
-      <Accordion defaultActiveKey="0">
+  return (<div className="col-12 col-md-2 pt-15 border-right">
+    <Accordion className='border-0'>
       <Accordion.Item eventKey="0">
         <Accordion.Header>Accordion Item #1</Accordion.Header>
         <Accordion.Body>
@@ -32,7 +32,7 @@ const LeftMenu = (anchor) => {
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
-    </div>
+  </div>
   );
 }
 
