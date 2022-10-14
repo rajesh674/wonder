@@ -144,7 +144,7 @@ const Home = () => {
             <div className="portlet-title">Launch Timeline</div>
             <div
               className="pt-15 pb-15 btimeline"
-              style={{ width: "100%", height: "calc(100vh - 370px)", overflow: "auto" }}
+              style={{ width: "100%", height: "calc(100vh - 380px)", overflow: "auto" }}
             >
               {dataLoad ? <div className="d-flex align-items-center justify-content-center h-100"><Spinner animation="border" variant="primary" /></div> : <Btimeline data={reducerTimeLineData} />}
             </div>
