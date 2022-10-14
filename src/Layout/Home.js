@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLoadScript } from "@react-google-maps/api";
 import axios from "axios";
 import BarChart from "../Layout/utility/BarCharts";
 import Btimeline from "../Layout/utility/timeline";
@@ -10,7 +11,8 @@ import {
   fetchTimeLineData,
 } from "../Layout/redux/actions/ApiCall";
 import { useDispatch, useSelector } from "react-redux";
-import MapContainer from "../Layout/utility/map.js";
+//import MapContainer from "../Layout/utility/map.js";
+import GoogleMapsInfoWindow from "../Layout/utility/googleMaps";
 
 const Home = () => {
   const postUserApi = useSelector((state) => state.reducerPosts);
@@ -47,6 +49,11 @@ const Home = () => {
         setdataLoad(false);
       });
   };
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: "", // Add your API key
+    version: "weekly"
+  });
 
   useEffect(() => {
     AllApi();
@@ -122,9 +129,9 @@ const Home = () => {
               className="d-flex align-items-center "
               style={{ width: "100%", height: "calc(100vh - 380px)" }}
             >
-              {dataLoad ? <div className="d-flex align-items-center justify-content-center w-100 h-100"><Spinner animation="border" variant="primary" /></div> :<MapContainer
+              {!isLoaded ? <div className="d-flex align-items-center justify-content-center w-100 h-100"><Spinner animation="border" variant="primary" /></div> :<GoogleMapsInfoWindow
                 data={mapData}
-                center={{ lat: mapData[2]?.lat, lng: mapData[2]?.lng }}
+                centerData={{ lat: mapData[2]?.lat, lng: mapData[2]?.lng }}
               />}
             </div>
           </div>
